@@ -1,0 +1,11 @@
+/shapefiles/*
+/result/*geojson
+/data/*geojson
+/data/*.nc
+*tar.gz
+*.nc
+*.png
+*.txt
+*.out
+*.log
+*.csv
