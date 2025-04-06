@@ -1,4 +1,3 @@
-/shapefiles/*
 /result/*geojson
 /data/*geojson
 /data/*.nc
