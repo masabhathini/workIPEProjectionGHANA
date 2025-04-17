@@ -14,11 +14,12 @@ inputdatapath='data/'
 ########
 sdata = xr.open_mfdataset(inputdatapath + 'subset_tas*.nc').drop('height')
 sdata.rio.write_crs("epsg:4326", inplace=True)
-intervals = np.round(np.arange(-10,10,0.1), 1)
+lonintervals = np.round(np.arange(-5,5,0.1), 1)
+latintervals = np.round(np.arange(3,13,0.1), 1)
 
 for ydata in sdata.groupby('time.year'):
     print('Processing Year: ',ydata[0])
-    data = ydata[1].interp(lon=intervals,lat=intervals).groupby('time.date').max()
+    data = ydata[1].interp(lon=lonintervals,lat=latintervals).groupby('time.date').max()
     ####################
     sample = data.tas[0,:,:].to_dataset()
     df = sample.to_dataframe().reset_index()

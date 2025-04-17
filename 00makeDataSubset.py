@@ -13,7 +13,7 @@ for file in sorted(glob.glob(inputdatapath + 'tas*.nc')):
     data = xr.open_dataset(file).drop_dims(['bnds'])
     # Convert the longitude from 0-360 to -180 to 180
     data['lon'] = (((data['lon'] + 360) % 360) - 180)
-    data.sel(lon=slice(-15,15),lat=slice(-15,15)).to_netcdf('data/subset_'+ file.split('/')[-1])
+    data.sel(lon=slice(-15,15),lat=slice(-10,20)).to_netcdf('data/subset_'+ file.split('/')[-1])
     data.close()
 
 #    for ydata in data.groupby('time.year'):
